@@ -8,11 +8,32 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIWebViewDelegate{
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let webView:UIWebView = UIWebView(frame: CGRect(x:0, y:0, width: UIScreen.main.bounds.width, height:UIScreen.main.bounds.height))
+        
+        self.view.addSubview(webView)
+        
+        webView.delegate = self
+        
+        //Load web site into my web view
+        let loadURL = URL(string: "http://www.apple.com")
+        let myURLRequest:URLRequest = URLRequest(url: loadURL!)
+        webView.loadRequest(myURLRequest)
+        
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView)
+    {
+        
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView)
+    {
+        
     }
 
     override func didReceiveMemoryWarning() {
